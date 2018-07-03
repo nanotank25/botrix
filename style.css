@@ -1,0 +1,43 @@
+body {
+    background: #eef2f4 url(pattern-grey.svg) 0 0 repeat;
+    margin: 0;
+    padding: 0;
+}
+.top {
+    background-color: #fff;
+    box-shadow: 1px 1px 5px #222;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    margin-top: 150px;
+}
+
+.fixed {
+    position: fixed;
+    right: 60px;
+    bottom: 60px;
+}
+
+.update_ibl {
+    height:550px;
+}
+
+.container {
+    max-width: 1500px;
+}
+.dropdown-item {
+    cursor: pointer;
+}
+
+.close_frame {
+    position:  absolute;
+    right: 60px;
+}
+
+.right {
+    float: right;
+}

@@ -1,0 +1,8 @@
+И что я могу тут тебе ответить? <a href='#' data-toggle="modal" data-target="#exampleModal">Весь список функционала.</a>
+На этот сообщение у меня даже нету слов! <a href='#' data-toggle="modal" data-target="#exampleModal">Весь список функционала.</a>
+Ты действительно хочешь мне это сказать? <a href='#' data-toggle="modal" data-target="#exampleModal">Весь список функционала.</a>
+Что ты мне хочешь этим сказать? <a href='#' data-toggle="modal" data-target="#exampleModal">Весь список функционала.</a>
+Я даже и не знаю что тебе ответить :( <a href='#' data-toggle="modal" data-target="#exampleModal">Весь список функционала.</a>
+Ой. А я не знаю что ответить :) <a href='#' data-toggle="modal" data-target="#exampleModal">Весь список функционала.</a>
+А я не умею. <a href='#' data-toggle="modal" data-target="#exampleModal">Весь список функционала.</a>
+Извините, меня еще не научили данному функционалу. <a href='#' data-toggle="modal" data-target="#exampleModal">Весь список функционала.</a>
