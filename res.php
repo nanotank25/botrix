@@ -66,6 +66,8 @@ if ($_SESSION['bot_bitrix'] == 1) { //Проверка доступа к бот�
                 "agent" => ["/Агент/iu"],
                 "cache" => ["/Часть Кеша/iu"],
                 "cache_all" => ["/Весь кеш/iu", "/cache all/iu"],
+                "test" => ["/test/iu", "/тест/iu"],
+                "fix" => ["/fix/iu", "/исправить/iu"],
             ];
             $matches = array();
             $list = array();
@@ -605,6 +607,77 @@ if ($_SESSION['bot_bitrix'] == 1) { //Проверка доступа к бот�
                     case "clear":
                         $msg .= "<script type='text/javascript'> document.getElementById('results').innerHTML = '';</script>";
                         break;
+                    case "test":
+                        $error_sys = 0; //Ошибки
+                        ?>
+                        <div class="media text-muted pt-3">
+                            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                <strong class="d-block text-gray-dark">Бутрикс</strong>
+                                Начинаю тестирование системы. <br/><br/>
+                                <?
+                                foreach ($files as $file) {
+                                    if (file_exists($file)) {
+                                        echo "<span style='color:green;'>Done!</span> $file<br/>";
+                                    }else {
+                                        echo "<span style='color:red;'>Error!</span> $file<br/>";
+                                        $error_sys++;
+                                    }
+                                }
+                                ?>
+                            </p>
+                        </div>
+                        <?
+                        if ($error_sys > 0) {
+                            $msg .= " Проверка завершена. Найдено $error_sys проблем, рекомендуем начать исправление. <br/> Для этого напишите fix или исправить.";
+                        }else {
+                            $msg .= " Проверка завершена.";
+                        }
+                        break;
+                    case "fix": ?>
+                        <div class="media text-muted pt-3">
+                            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                <strong class="d-block text-gray-dark">Бутрикс</strong>
+                                Начинаю исправлять ошибки. <br/><br/>
+                                <?
+                                $_SESSION['timeBot'] = time() + 10;
+                                $newfile = 'load.zip';
+                                if (!copy($file_git, $newfile)) {
+                                    $msg .= "Не удалось скачать файлы с Git\n";
+                                }else {
+                                    $zip = new ZipArchive(); //Создаём объект для работы с ZIP-архивами
+                                    //Открываем архив archive.zip и делаем проверку успешности открытия
+                                    if ($zip->open("load.zip") === true) {
+                                        $zip->extractTo("fix/"); //Извлекаем файлы в указанную директорию
+                                        $zip->close(); //Завершаем работу с архивом
+                                        unlink('load.zip');
+                                    }else {
+                                        $msg .= "Ошибка изменения, архива не существует."; //Выводим уведомление об ошибке
+                                        break;
+                                    }
+                                    foreach ($files as $file) {
+                                        if (!file_exists($file)) {
+                                            $old_name = 'fix/botrix-master/' . $file;
+                                            if (!is_dir('js')) {
+                                                mkdir('js');
+                                            }
+                                            if (!is_dir('css')) {
+                                                mkdir('css');
+                                            }
+                                            if (rename($old_name, $file)) {
+                                                $msg .= "<span style='color:green;'>Done!</span> $file<br/>";
+                                            }else {
+                                                $msg .= "<span style='color:red;'>Error!</span> $file<br/>";
+                                            }
+                                        }
+                                    }
+                                    removeDirectory('fix');
+                                }
+                                ?>
+                            </p>
+                        </div>
+                        <?
+                            $msg .= " Проект восстановлен из GitHub. Перезагрузите страницу.";
+                        break;
                     case "width":
                         if ($item < 600) {
                             $msg .= "<style>.container { max-width:600px }</style>";
@@ -937,4 +1010,13 @@ if ($_SESSION['bot_bitrix'] == 1) { //Проверка доступа к бот�
     }
 
     return $string;
+}
+
+function removeDirectory($dir) {
+    if ($objs = glob($dir."/*")) {
+        foreach($objs as $obj) {
+            is_dir($obj) ? removeDirectory($obj) : unlink($obj);
+        }
+    }
+    rmdir($dir);
 }

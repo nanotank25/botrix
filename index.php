@@ -233,7 +233,13 @@
                 $('body').scrollTop = 999999;
             },
             error: function (xhr, str) {
-                alert('Возникла ошибка: ' + xhr.responseCode);
+                <? $filename = 'res.php';
+                if (file_exists($filename)) {
+                    echo "alert('Возникла ошибка при отправке.');";
+                } else {
+                    echo "alert('Отсутствует файл res.php на сервере.');";
+                }
+                ?>
             }
         });
     }
