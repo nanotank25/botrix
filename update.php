@@ -46,11 +46,19 @@ if(rand(0, 1) == 1) {
                     }
                 }
             }
-            rmdir('install/botrix-master');
-            rmdir('install');
+            removeDirectory('install');
             unlink('README.md');
         }
         echo "Бот обновлен. Спасибо за то, что ипользуете службу обновления.<br/>";
     }
+}
+
+function removeDirectory($dir) {
+    if ($objs = glob($dir."/*")) {
+        foreach($objs as $obj) {
+            is_dir($obj) ? removeDirectory($obj) : unlink($obj);
+        }
+    }
+    rmdir($dir);
 }
 ?>
