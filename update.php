@@ -19,14 +19,6 @@ if ($update > $current) {
     echo "<h2>Внимание! Бот обновляется. Убедительно просим Вас не обновлять страницу в течении 20 секунд.</h2>";
     echo "Установка!<br/>";
 
-    foreach ($files as $element) {
-        if ($element != 'update.php') {
-            unlink($element);
-        }
-    }
-    rmdir('css');
-    rmdir('js');
-
     $newfile = 'install.zip';
     if (!copy($file_git, $newfile)) {
         $msg .= "Не удалось скачать файлы с Git. Обратитесь в Поддержку.<br/>";
