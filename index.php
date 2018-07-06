@@ -1,5 +1,6 @@
 <!doctype html>
 <? session_start(); ?>
+<? require_once('update.php');?>
 <html lang="en">
 <head>
     <!-- Meta tags -->
