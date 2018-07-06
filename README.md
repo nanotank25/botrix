@@ -24,4 +24,4 @@ if (!copy($file_git, $newfile)) {
 echo "Спасибо за установку!<br/>";
 ```
 
-Bot version: 1.1.[1530900500](#version)
+Bot version: 1.1.[1530902190](#version)
