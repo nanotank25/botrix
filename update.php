@@ -1,5 +1,5 @@
 <?php
-if (rand(0, 1) == 1) { //Проверка обновлений 50 на 50
+if(rand(0, 1) == 1) {
 
     require_once('version.php');
 
