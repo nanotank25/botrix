@@ -24,7 +24,7 @@
 <main role="main" class="container">
     <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
         <img class="mr-3" src="logo.png" alt="Bitrix Version" width="150">
-        <h1 class="title" style="color:#6c757d;">Бутрикс</h1>
+        <h1 class="title" style="color:#6c757d;">Бутрикс (Тестирования Автообновления)</h1>
     </div>
     <div class="chat my-3 p-3 bg-white rounded box-shadow">
         <h6 class="border-bottom border-gray pb-2 mb-0">Чат
