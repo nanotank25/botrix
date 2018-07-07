@@ -16,9 +16,9 @@
 Полный список функционала читайте в [WIKI](https://github.com/nanotank25/botrix/wiki).
 Гибкие настройки и высокий уровень безопасности. 
 Настройте бота так как Вам угодно. Ждем Вас на [WIKI](https://github.com/nanotank25/botrix/wiki)! 
+***
 Мы заботимся о наших пользователях и поэтому 
 мы предлагаем удобные виды установки Бутрикса.
-***
 * Через Git: `git clone https://github.com/nanotank25/botrix.git`
 * Скачать архив: `https://github.com/nanotank25/botrix/archive/master.zip`
 * Для быстрой установки на сервере скопируйте код ниже:
